@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-group .form-control {
+    border-radius: 50px !important;
+}
+
+/* Navbar */
+.navbar {
+    z-index: 2;
+    background: #000;
+    height: 70px;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 100px;
+}
+
+/*Icon Find*/
+.navbar .btn i {
+    font-size: 1.5rem;
+}
+
+.navbar .nav-link {
+    border-radius: 50%;
+    margin-top: 15px;
+}
+
+.navbar .nav-link i:hover {
+    border-radius: 50%;
+    color: #b3b3b3;
+}
+
+/* Icon Home & Noti */
+.navbar .nav-link i {
+    font-size: 1.5rem;
+    margin-right: -5px;
+}
+
+.input-group button {
+    border-radius: 0 50px 50px 0;
+}
+
+.list-group {
+    max-height: 300px;
+    overflow-y: auto; 
+}
+
+.d-flex a img {
+    width: 60px; 
+    height: 60px;
+    padding: 8px;
+    background: #292929;
+    margin-top: -15px !important;
+}
+
+.d-flex a img:hover {
+    width: 60px; 
+    height: 60px;
+    padding: 8px;
+    background: #1b1b1b;
+    margin-top: -15px !important;
+}
+
+.collapse button {
+    background: #292929;
+}
+
+.collapse button:hover {
+    background: #1b1b1b;
+}
+
+.collapse form {
+    margin-left: 250px;
+}
+
+.collapse form input{
+    width: 300px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #161616;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    color: white;
+    padding: 5px;
+    height: 570px;
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+.library::after {
+    content: '+';
+    float: right;
+    margin-left: 65px;
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 1000;
+}
+
+.your-library a {
+    background: #161616;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex; 
+    align-items: center;
+    color: #b3b3b3;
+    font-weight: 550;
+    font-size: 17px;
+}
+
+.your-library a i {
+    font-size: 20px;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.sidebar-nav {
+    background: 161616;
+    border-radius: 10px;
+}
+
+.created-playlist {
+    background: #161616;
+    padding-top: 5px;
+    color: white;
+    font-size: 16px;
+    padding-left: 5px;;
+}
+
+.created-playlist ul li {
+    background: #161616;
+    border-radius: 6px;
+    height: 80px;
+}
+
+.created-playlist ul li img {
+    width: 65px; 
+    height: 65px;   
+    border-radius: 6px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.sidebar-scroll {
+    height: 490px;
+    overflow-y: auto;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+    background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+    background: transparent;
+    width: 10px;
+    border-radius: 10px;
+}
+
+.sidebar-scroll:hover::-webkit-scrollbar-thumb {
+    background: #2b2b2b;
+    width: 3px;
+}
+
+.created-playlist ul li:hover {
+    background: #292929;
+}
+
+.login-btn {
+    margin-right: 20px;
+}
+
+.login-btn button{
+    border: 0;
+    background: transparent;
+}
+
+.login-btn .sign-up {
+    font-size: 17 px;
+    font-weight:550;
+    color: #b3b3b3;
+    margin-right: 20px;
+}
+
+.login-btn .sign-up:hover {
+    color: white;
+}
+
+.login-btn .log-in {
+    font-size: 17px;
+    font-weight:550;
+    color: #000;
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.login-btn .log-in:hover {
+    background: #dbdada;
+}
+
+.main-section {
+    background: #161616;
+    margin-left: 265px;
+    height: 570px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.main-section .item {
+    background: transparent;
+    left: 300px;
+}
+
+.main-section .item .img {
+    background: transparent;
+}
+
+.song-list {
+    padding: 20px;
+}
+
+.song-list h2 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: 600;   
+}
+
+.song-list .card {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    background: transparent;
+    border: 0;
+    margin-bottom: -15px;
+}
+
+.song-list .card .item {
+    width: 168px;
+    min-width: 140px;
+    background: #161616;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 6px;
+    max-height: 240px;
+    overflow-y: hidden;
+}
+
+.song-list .card .item img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.song-list .item h4 {
+    color: #fff;
+    font-size: 17px;
+}
+
+.song-list .item h4:hover {
+    text-decoration: underline;
+}
+
+.song-list .item p {
+    color: #dbdada;
+    font-size: 13px;
+}
+
+.song-list .card .item:hover {
+    background: #292929;
+}
+
+.song-list .play-btn {
+    position: relative;
+}
+
+.song-list .play-btn i{
+    position: absolute;
+    background: yellow;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 1.0rem;
+    right: 6px;
+    top: -50px;
+    opacity: 0;
+    transition: 0.3s ease all;
+}
+
+.song-list .card .item:hover .play-btn i {
+    opacity: 1;
+    transform: translateY(-10px); 
+}
+
+.song-list .play-btn i:hover {
+    padding: 13px;
+    background: rgb(255, 255, 80);
+}
+
+.main-section::-webkit-scrollbar {
+    background: transparent;
+}
+
+.main-section::-webkit-scrollbar-thumb {
+    background: transparent;
+    width: 10px;
+    border-radius: 10px;
+}
+
+.main-section:hover::-webkit-scrollbar-thumb {
+    background: #2b2b2b;
+    width: 3px;
+}
+
+
