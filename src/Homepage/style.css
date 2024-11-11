@@ -13,13 +13,6 @@ body {
     border-radius: 50px !important;
 }
 
-/* Navbar */
-.navbar {
-    z-index: 2;
-    background: #000;
-    height: 70px;
-}
-
 .navbar-brand {
     font-size: 20px;
     font-weight: 700;
@@ -28,7 +21,7 @@ body {
 
 /*Icon Find*/
 .navbar .btn i {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Đổi kích thước icon */
 }
 
 .navbar .nav-link {
@@ -54,6 +47,13 @@ body {
 .list-group {
     max-height: 300px;
     overflow-y: auto; 
+}
+
+/* Navbar */
+.navbar {
+    z-index: 2; /* Đặt navbar ở phía trên sidebar */
+    background: #000;
+    height: 70px;
 }
 
 .d-flex a img {
@@ -96,7 +96,7 @@ body {
     top: 70px;
     left: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 1; /* Đảm bảo thanh bên nằm dưới navbar */
     color: white;
     padding: 5px;
     height: 570px;
@@ -144,6 +144,7 @@ body {
 }
 
 .created-playlist ul li {
+     /* Điều chỉnh khoảng cách giữa các ảnh */
     background: #161616;
     border-radius: 6px;
     height: 80px;
@@ -170,7 +171,7 @@ body {
 .sidebar-scroll::-webkit-scrollbar-thumb {
     background: transparent;
     width: 10px;
-    border-radius: 10px;
+    border-radius: 10px; /* Thêm bo góc để thanh cuộn mềm mại */
 }
 
 .sidebar-scroll:hover::-webkit-scrollbar-thumb {
@@ -267,6 +268,7 @@ body {
     overflow-y: hidden;
 }
 
+
 .song-list .card .item img {
     width: 100%;
     border-radius: 6px;
@@ -324,7 +326,7 @@ body {
 .main-section::-webkit-scrollbar-thumb {
     background: transparent;
     width: 10px;
-    border-radius: 10px;
+    border-radius: 10px; /* Thêm bo góc để thanh cuộn mềm mại */
 }
 
 .main-section:hover::-webkit-scrollbar-thumb {
