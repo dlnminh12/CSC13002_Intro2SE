@@ -1,0 +1,21 @@
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def is_primitive_root(g, n):
+    required_set = set(num for num in range(1, n) if gcd(num, n) == 1)
+    actual_set = set(pow(g, powers, n) for powers in range(1, n))
+    return required_set == actual_set
+
+def find_primitive_roots(n):
+    primitive_roots = []
+    for g in range(1, n):
+        if is_primitive_root(g, n):
+            primitive_roots.append(g)
+    return primitive_roots
+
+# Ví dụ: Tìm các phần tử sinh của Z_17^*
+n = 17
+primitive_roots = find_primitive_roots(n)
+print(f"Các phần tử sinh của Z_{n}^* là: {primitive_roots}")
