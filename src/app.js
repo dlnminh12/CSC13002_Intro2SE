@@ -24,6 +24,11 @@ app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'signup.html'));  // Đưa đường dẫn đúng tới signup.html
 });
 
+app.get('/test', (req, res) => {
+    res.type('html'); // Đảm bảo header được đặt đúng
+    res.sendFile(path.join(__dirname, '..', 'Signup', 'Signup.html'));
+});
+
 
 app.use('/api/auth', authRoutes);// base URL/path prefix for all routers defined in authRoutes
 
@@ -31,4 +36,5 @@ app.use('/api/auth', authRoutes);// base URL/path prefix for all routers defined
 app.listen(3000, ()=>{
     console.log('listening on port 3000');
 })
+
 

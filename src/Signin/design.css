@@ -44,8 +44,8 @@
     position: relative;
     color:var(--text_color);
     z-index: 0; /* Đảm bảo chữ nằm trên lớp phủ */
-    top: 60px;
-    left: 370px;
+    top: 100px;
+    left: 670px;
 }
 .Login_text
 {
@@ -55,24 +55,24 @@
     position: relative;
     color:var(--text_color);
     z-index: 0; /* Đảm bảo chữ nằm trên lớp phủ */
-    top: 70px;
-    left: 470px
+    top: 110px;
+    left: 770px
 }
 
 .box_Login
 {
     position: relative;
-    width:380px;
-    height:380px;
+    width:580px;
+    height:580px;
     color:white;
     display:flex;
     align-items: top;
     justify-content: center;
     background-color: #1D2128FF;
     z-index: 1;
-    border-radius: 5px;
-    margin-top: 160px;
-    margin-left: 450px;
+    border-radius: 10px;
+    margin-top: 200px;
+    margin-left: 650px;
 }
 
 .box_Login .Sign_In_text
@@ -81,7 +81,8 @@
     font-family: var(--text_font);
     font-weight: bold;
     font-size:20px;
-    margin-top:30px;
+    margin-top:40px;
+    margin-left: -150px;
     
 }
 .box_Login .Email_text
@@ -90,8 +91,8 @@
     font-family: var(--text_font);
     font-size:15px;
     font-weight: bold;
-    margin-top:80px;
-    margin-right: 290px;
+    margin-top:100px;
+    margin-left: -150px;
 }
 
 .box_Login .Password_text
@@ -100,14 +101,14 @@
     font-family: var(--text_font);
     font-size:15px;
     font-weight: bold;
-    margin-top:170px;
-    margin-right: 260px;
+    margin-top:190px;
+    margin-left: -150px;
 }
 
 .box_Login input[type="email"]
 {
-    width: 80%;
-    height:4%;
+    width: 90%;
+    height:6%;
     padding: 0.8rem;
     margin: 0.5rem 0;
     border: 1px solid #4d4d4f;
@@ -116,13 +117,14 @@
     color: #fff;
     font-size: 1rem;
     position: absolute;
-    margin-top:110px;
+    margin-top: 130px;
+    margin-left: -150px;
 }
 
 .box_Login input[type="password"]
 {
-    width: 80%;
-    height:4%;
+    width: 90%;
+    height:6%;
     padding: 0.8rem;
     margin: 0.5rem 0;
     border: 1px solid #4d4d4f;
@@ -131,21 +133,39 @@
     color: #fff;
     font-size: 1rem;
     position: absolute;
-    margin-top:200px;
+    margin-top:220px;
+    margin-left: -150px;
 }
 
-.box_Login button
+.box_Login button[type="submit"]
 {
-    width:80%;
-    height:8%;
+    width:90%;
+    height:10%;
     position: absolute;
     font-family: var(--text_font);
     font-size:15px;
     border-radius: 5px;
     background-color: #6264a7;
     color:var(--text_color);
-    margin-top:280px;
+    margin-top:300px;
+    margin-left: -150px;
 }
+p {
+    font-size: 16px; /* Cỡ chữ */
+    color: #ffffff; /* Màu chữ */
+    margin-top: 380px ; /* Khoảng cách trên và dưới */
+}
+
+p a {
+    color: #3498db; /* Màu chữ của liên kết */
+    text-decoration: none; /* Xóa gạch chân */
+    font-weight: bold; /* Đậm chữ */
+}
+
+p a:hover {
+    text-decoration: underline; /* Thêm gạch chân khi hover */
+}
+
 
 /* .box_Login .New_Member_text
 {
