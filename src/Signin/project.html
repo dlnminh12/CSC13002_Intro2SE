@@ -83,13 +83,44 @@
         <form id="loginForm">
             <h2 class="Sign_In_text">Sign In</h2>
             <p class="Email_text"> Email</p>
-            <input type="email" name="email" placeholder="Enter your email">
-            <p class="Password_text"> Password</p>
-            <input type="password" name="password" placeholder="Enter your password">
+            <input type="email" id ="email" name="email" placeholder="Enter your email" required>
+            <p class="Password_text" require> Password</p>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
             <button type="submit">Sign In</button>
             <p>Don't have an account? <a href="../SignUp/signup.html">Sign up here</a></p>
         </form>
     </div>
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Ngừng reload trang khi submit form
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Gửi yêu cầu POST đến API
+        try {
+            const response = await fetch('/api/login/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+            console.log('Response from server:', data);
+            if (response.ok) {
+                alert('Login successful');
+                // Redirect or handle success
+            } else {
+                alert('Login failed: ' + data.message);
+            }
+        } catch (error) {
+        console.error('Error:', error);
+        alert('An unexpected error occurred. Please try again.');
+        }
+    });
+    </script>
     
 </body>
 </html>
