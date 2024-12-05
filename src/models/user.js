@@ -17,7 +17,7 @@ userSchema.pre('save', async function(next){
 });
 
 //
-const User=usersConnection.model("User", userSchema);//
+const User=usersConnection.model("User", userSchema);
 //export users.
 module.exports = User;
 
