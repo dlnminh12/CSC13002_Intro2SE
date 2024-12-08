@@ -62,6 +62,7 @@ label {
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    margin-top: 10px;
 }
 .signupbutton:hover {
     background-color: grey;
