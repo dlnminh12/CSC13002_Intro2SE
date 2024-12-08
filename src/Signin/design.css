@@ -156,13 +156,13 @@
 }
 p {
     font-size: 16px; /* Cỡ chữ */
-    color: #ffffff; /* Màu chữ */
+    color: #aeadad; /* Màu chữ */
     margin-top: 380px ; /* Khoảng cách trên và dưới */
     font-family: var(--text_font);
 }
 
 p a {
-    color: #3498db; /* Màu chữ của liên kết */
+    color: white; /* Màu chữ của liên kết */
     text-decoration: none; /* Xóa gạch chân */
     font-weight: bold; /* Đậm chữ */
 }

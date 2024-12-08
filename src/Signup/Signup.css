@@ -75,3 +75,17 @@ label {
     padding-left: 30px;
     color: white;
 }
+
+#already {
+    margin-left: 20%;
+    margin-top:150px ;
+    color:  #aeadad;
+}
+#already a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+#already a:hover {
+    text-decoration: underline;
+}
