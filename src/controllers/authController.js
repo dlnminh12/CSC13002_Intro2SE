@@ -14,20 +14,3 @@ exports.signup=async(req, res)=> {// req: represent user request, res: represent
         res.status(400).send({error:'Error creating user'});
     }
 };
-
-exports.login = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(400).send({ error: 'Invalid email or password' });
-        }
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).send({ error: 'Invalid email or password' });
-        }
-        res.status(200).send({ message: 'Login successful' });
-    } catch (error) {
-        res.status(400).send({ error: 'Error logging in' });
-    }
-};

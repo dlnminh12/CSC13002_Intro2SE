@@ -1,65 +1,7 @@
-<!--<!DOCTYPE html>
-<html>
-    <head>
-        <title>SoundJack</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="design.css">
-
-    </head>
-    <body>
-        <div class="background_image">
-            <div class="SoundJack">SoundJack</div>
-            <div class="Logi">
-                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462551867_908052134611009_3836688746465029196_n.png?_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_ohc=JXd2gLCUEncQ7kNvgF6C8r2&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFXcKzfoTFFhJJWgg0NMr6fBBpHdfR2V2_zl-R-nriJTg&oe=67581D75" alt="Logo" class="logo">
-            </div>
-            <div class="Unlock_text">Unlock a world of endless entertainment</div>
-            <div class="Login_text">Login to Discover, Stream, and Enjoy</div>
-        </div>
-        <div class="box_Login">
-            <h class="Sign_In_text">Sign In</h>
-            <p class="Email_text"> Email</p>
-            <input type="email" placeholder="Enter your email">
-            <p class="Password_text"> Password</p>
-            <input type="password" placeholder="Enter your password">
-            <button type = "signin" >Sign In</button>
-            === <p class="New_Member_text">New member?</p> ===
-            
-
-        </div>
-        
-            <script>
-        document.querySelector('#loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const email = document.querySelector('input[name="email"]').value;
-            const password = document.querySelector('input[name="password"]').value;
-
-            fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Login successful!');
-                    window.location.href = '/dashboard'; // Redirect to a dashboard or home page
-                } else {
-                    alert('Login failed: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
-        
-    </body>
-</html> -->
-
-
+<!---
+<body>
+</body>
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,13 +25,44 @@
         <form id="loginForm">
             <h2 class="Sign_In_text">Sign In</h2>
             <p class="Email_text"> Email</p>
-            <input type="email" name="email" placeholder="Enter your email">
-            <p class="Password_text"> Password</p>
-            <input type="password" name="password" placeholder="Enter your password">
+            <input type="email" id ="email" name="email" placeholder="Enter your email" required>
+            <p class="Password_text" require> Password</p>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
             <button type="submit">Sign In</button>
             <p>Don't have an account? <a href="../SignUp/signup.html">Sign up here</a></p>
         </form>
     </div>
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Ngừng reload trang khi submit form
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+
+        // Gửi yêu cầu POST đến API
+        try {
+            const response = await fetch('http://localhost:3000/api/login/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await response.json();
+            console.log('Response from server:', data);
+            if (response.ok) {
+                alert('Login successful');
+                // Redirect or handle success
+            } else {
+                alert('Login failed: ' + data.message);
+            }
+        } catch (error) {
+        console.error('Error:', error);
+        alert('An unexpected error occurred. Please try again.');
+        }
+    });
+    </script>
     
 </body>
 </html>
