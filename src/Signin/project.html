@@ -53,6 +53,8 @@
             console.log('Response from server:', data);
             if (response.ok) {
                 alert('Login successful');
+                window.location.href = 'http://localhost:3000/homepage'; // Redirect to homepage
+                
                 // Redirect or handle success
             } else {
                 alert('Login failed: ' + data.message);

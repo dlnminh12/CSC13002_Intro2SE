@@ -75,6 +75,7 @@ label {
     padding-left: 30px;
     color: white;
 }
+<<<<<<< Updated upstream:src/Signup/Signup.css
 
 #already {
     margin-left: 20%;
@@ -89,3 +90,9 @@ label {
 #already a:hover {
     text-decoration: underline;
 }
+=======
+.signupbutton {
+    pointer-events: auto; /* Đảm bảo không bị chặn */
+}
+
+>>>>>>> Stashed changes:views/Signup/Signup.css

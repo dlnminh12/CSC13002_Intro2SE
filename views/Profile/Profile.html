@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SoundJack</title>
+        <meta charset="utf-8">
+        <!-- Dùng để link tới css -->
+        <link rel="stylesheet" href="ProfileForm_design.css">
+
+    </head>
+    <body>
+        <div class="background_image">
+            <div class="SoundJack">SoundJack</div>
+            <div class="Logi">
+                <img src="logo_SoundJack.png" alt="Logo" class="logo">
+            </div>
+            
+        </div>
+        <div class="box_in4" id="Profile">
+            <img src="https://i.pinimg.com/474x/df/ce/a7/dfcea7989195d3273c2bcb367fca0a83.jpg" alt="Avatar" class="Avatar">
+            <p class="FullName_text"> Full Name</p>
+            <input type="text" id="FullName" placeholder="Enter your full name">
+            <p class="DOB_text"> DOB</p>
+            <input type="date" id="DOB" placeholder="Enter your day of birth">
+            <p class="PhoneNumber_text">Phone Number</p>
+            <input type="tel" id="PhoneNumber" placeholder="Enter your phone number">
+            <div class="Gender">
+                <tr>Gender: </tr>
+                <input type="radio" name="Gender">Male
+                <input type="radio" name="Gender">Female
+            </div>
+            <button class="box_in4 button" type="submit">Save</button>
+            
+
+        </div>
+        <script>
+            document.getElementById('Profile').addEventListener('submit', async function(event) {
+                event.preventDefault();
+                const name = document.querySelector('input[id="FullName"]').value;
+                const dob = document.querySelector('input[id="DOB"]').value;
+                const Phonenumber = document.querySelector('input[id="PhoneNumber"]').value;
+                try {
+                    const response = await fetch('http://localhost:3000/api/auth/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email, password })
+                    });
+                    const data = await response.json();
+                    if (response.ok ) {
+                        alert('Sign up successful!');
+                        window.location.href = 'http://localhost:3000/signin'; // Redirect to homepage
+
+                    } else {
+                        alert('Sign up failed: ' + (data.message || 'Unknown error.'));
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                }
+            });
+
+        </script>
+        
+    </body>
+</html>

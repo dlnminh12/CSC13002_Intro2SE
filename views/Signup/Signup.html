@@ -7,68 +7,65 @@
     <link rel="stylesheet" href="Signup.css">
     <title>SoundJack</title>
 </head>
-
 <body>
     <div class="background">
+        console.log('Before event listener');
         <div class="logo">
             <img src="img/firefly-bnw.png" alt="firefly" style="width: 30px; height: 30px; position: relative;">
             <h3 style="margin: 0px;position: absolute; top:15px; left: 70px; display:inline-block;">SoundJack</h3>
         </div>
         <div class="container">
             <h2 style="font: Arial, sans-serif; color: white; margin: 5% 35% 20px 40%"> Sign Up</h2>
-            <form>
-                <label for "Username" style="color: aliceblue;"> Email </label>
-                <input class="display1 text" type="text" name="Email" placeholder="Email" required>
+            <form id="SignUpForm">
+                <label for="Username" style="color: aliceblue;">Email</label>
+                <input class="display1 text" type="email" name="Email" placeholder="Email" required>
 
-                <label for "Password" style="color: aliceblue;">Password </label>
+                <label for="Password" style="color: aliceblue;">Password</label>
                 <input class="display1 text" type="password" name="Password" placeholder="Password" required>
 
-                <label for "Retype_Password" style="color: aliceblue;">Confirm Password </label>
+                <label for="Retype_Password" style="color: aliceblue;">Confirm Password</label>
                 <input class="display1 text" type="password" name="ConfirmPassword" placeholder="Confirm Password" required>
+<<<<<<< Updated upstream:src/Signup/Signup.html
                 <button class="signupbutton">Sign up</button>
                 <p id="already"> Already have an account? <a href="../Signin/project.html">Sign in here</a></p>
+=======
+
+                <button class="signupbutton" type="submit">Sign up</button>
+>>>>>>> Stashed changes:views/Signup/Signup.html
             </form>
             
         </div>
     </div>
 
-    <!-- Connecting backend and frontend -->
     <script>
-        document.querySelector('form').addEventListener('submit', function(event) {
+        
+        document.getElementById('SignUpForm').addEventListener('submit', async function(event) {
             event.preventDefault();
-            
+            console.log('Get in there');
             const email = document.querySelector('input[name="Email"]').value;
             const password = document.querySelector('input[name="Password"]').value;
             const confirmPassword = document.querySelector('input[name="ConfirmPassword"]').value;
-    
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-    
-            fetch('/api/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+            try {
+                const response = await fetch('http://localhost:3000/api/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+                if (response.ok ) {
                     alert('Sign up successful!');
-                    window.location.href = '/login';
+                    window.location.href = 'http://localhost:3000/signin'; // Redirect to homepage
+
                 } else {
-                    alert('Sign up failed: ' + data.message);
+                    alert('Sign up failed: ' + (data.message || 'Unknown error.'));
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error:', error);
-            });
-        });
+                alert('An error occurred. Please try again.');
+            }
+        }); 
     </script>
-    
 </body>
 </html>
-
-
