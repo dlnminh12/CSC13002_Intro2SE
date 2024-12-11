@@ -11,14 +11,14 @@ exports.signin = async (req, res) => {
             return res.status(400).json({ success: false, message: 'User not found' });
         }
         const isMatch = await bcrypt.compare(password, user.password);
-        /*if (!isMatch) {
-            console.log('Password does not match');
-            return res.status(400).json({ success: false, message: 'Password does not match' });
-        }*/
-        if (password !== user.password) {
+        if (!isMatch) {
             console.log('Password does not match');
             return res.status(400).json({ success: false, message: 'Password does not match' });
         }
+        /*if (password !== user.password) {
+            console.log('Password does not match');
+            return res.status(400).json({ success: false, message: 'Password does not match' });
+        }*/
         console.log('Login successful');
         res.json({ success: true, message: 'Login successful' });
     } catch (error) {

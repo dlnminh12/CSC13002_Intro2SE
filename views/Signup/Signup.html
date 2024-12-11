@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="background">
-        console.log('Before event listener');
         <div class="logo">
             <img src="img/firefly-bnw.png" alt="firefly" style="width: 30px; height: 30px; position: relative;">
             <h3 style="margin: 0px;position: absolute; top:15px; left: 70px; display:inline-block;">SoundJack</h3>
@@ -25,10 +24,9 @@
 
                 <label for="Retype_Password" style="color: aliceblue;">Confirm Password</label>
                 <input class="display1 text" type="password" name="ConfirmPassword" placeholder="Confirm Password" required>
-                <button class="signupbutton">Sign up</button>
                 <p id="already"> Already have an account? <a href="../Signin/project.html">Sign in here</a></p>
+                <button class="signupbutton" type="submit">Sign up</button>
             </form>
-            
         </div>
     </div>
 
@@ -51,7 +49,7 @@
                 const data = await response.json();
                 if (response.ok ) {
                     alert('Sign up successful!');
-                    window.location.href = 'http://localhost:3000/signin'; // Redirect to homepage
+                    window.location.href = '../Signin/project.html';
 
                 } else {
                     alert('Sign up failed: ' + (data.message || 'Unknown error.'));
