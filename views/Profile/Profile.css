@@ -6,7 +6,7 @@
 
 .background_image 
 {
-    background-image: url(C:\Users\ACER\Desktop\NMCNPM\CSC13002_Intro2SE\views\Profile\Back_ground.jpg);
+    background-image: url(Back_ground.jpg);
     background-size: cover; /* Ảnh sẽ bao phủ toàn bộ */
     background-position: center; /* Đặt ảnh ở giữa */
     background-repeat: no-repeat; /* Không lặp lại ảnh */
@@ -159,15 +159,18 @@
 
 
 
-.box_in4 button
-{
-    width:80%;
-    height:8%;
+.box_in4 button {
+    width: 80%;
+    height: 8%;
     position: absolute;
     font-family: var(--text_font);
-    font-size:15px;
+    font-size: 15px;
     border-radius: 5px;
     background-color: #6264a7;
-    color:var(--text_color);
-    margin-top:620px;
+    color: var(--text_color);
+    margin-top: 620px;
+    margin-left: 0px;
+    text-align: center; /* Center the text horizontally */
+    line-height: 400%; /* Center the text vertically */
+    padding: 0; /* Remove default padding */
 }

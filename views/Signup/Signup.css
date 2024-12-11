@@ -18,7 +18,7 @@ body {
 }
 .container {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left:  50%; 
     width: 30%; 
     transform: translate(-50%, -35%);
@@ -75,11 +75,10 @@ label {
     padding-left: 30px;
     color: white;
 }
-<<<<<<< Updated upstream:src/Signup/Signup.css
 
 #already {
     margin-left: 20%;
-    margin-top:150px ;
+    margin-top:  20% ;
     color:  #aeadad;
 }
 #already a {
@@ -90,9 +89,7 @@ label {
 #already a:hover {
     text-decoration: underline;
 }
-=======
 .signupbutton {
     pointer-events: auto; /* Đảm bảo không bị chặn */
 }
 
->>>>>>> Stashed changes:views/Signup/Signup.css
