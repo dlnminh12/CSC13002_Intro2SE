@@ -22,13 +22,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 // });
 // Phục vụ các tệp tĩnh từ thư mục "view"
 app.use(express.static(path.join(__dirname,'..','views'))); // Điều chỉnh đường dẫn đến thư mục 'view'
-app.use(express.static(path.join(__dirname, 'SignIn')));
-
 app.get('/signup', (req, res) => {
-    res.sendFile(path.join(__dirname,'..','views','signup.html'));  // Đưa đường dẫn đúng tới 
+    res.sendFile(path.join(__dirname, '..', 'views', 'signup', 'signup.html'));
 });
+
 app.get('/signin', (req, res) => {
-    res.sendFile(path.join(__dirname,'Signin','project.html'));
+    res.sendFile(path.join(__dirname, '..', 'views', 'signin', 'project.html'));
 });
 
 app.use('/api/auth', authRoutes);// base URL/path prefix for all routers defined in authRoutes
