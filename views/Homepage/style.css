@@ -179,6 +179,11 @@ body {
     width: 3px;
 }
 
+.sidebar-scroll li:hover {
+    text-decoration: underline;
+    cursor: pointer; /* Change cursor to pointer */
+}
+
 .created-playlist ul li:hover {
     background: #292929;
 }
@@ -332,6 +337,229 @@ body {
 .main-section:hover::-webkit-scrollbar-thumb {
     background: #2b2b2b;
     width: 3px;
+}
+
+.homepage-player {
+    background: #161616;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    height: 82px;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.homepage-player .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Tạo khoảng cách giữa các thành phần trong wrapper */
+    width: 30%;
+    margin-right: 20px;
+}
+
+.homepage-player img {
+    width: auto;
+    height: auto;
+    border-radius: 6%;
+    object-fit: cover;
+}
+
+.homepage-player .details {
+    display: flex;
+    flex-direction: column; /* Sắp xếp title và artist theo chiều dọc */
+    max-width: 80%; /* Giới hạn chiều rộng của container */
+    overflow: hidden; /* Ngăn tràn nội dung */
+    flex-shrink: 0; /* Giữ kích thước cố định cho phần này */
+    width: 100%;
+}
+
+.homepage-player .details .title {
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap; /* Ngăn xuống dòng */
+    overflow: hidden; /* Ẩn phần tràn */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm */
+}
+
+.homepage-player .details .title:hover {
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap; /* Ngăn xuống dòng */
+    overflow: hidden; /* Ẩn phần tràn */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm */
+    text-decoration: underline;
+}
+
+.homepage-player .details .artist {
+    font-size: 14px;
+    color: #bbb;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 4px; /* Khoảng cách giữa title và artist */
+}
+
+.homepage-player .details .artist:hover {
+    font-size: 14px;
+    color: #bbb;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 4px; /* Khoảng cách giữa title và artist */
+    text-decoration: underline;
+}
+
+
+.homepage-player .silder-container {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.homepage-player .silder-container .curent-time {
+    font-size: 12px;
+    margin: 0 10px;
+}
+
+.homepage-player .silder-container .total-duration {
+    font-size: 12px;
+    margin: 0 10px;
+}
+
+.homepage-player .silder-container .slider {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+/* Đặt kiểu chung cho .controls */
+.controls {
+    display: flex;
+    flex-direction: column; /* Các phần tử trong controls sẽ được xếp theo chiều dọc */
+    align-items: center; /* Căn giữa các phần tử */
+    width: 100%;
+    padding: 10px 0;
+    max-width: 40%;
+}
+
+/* Định dạng cho các nút trong .buttons */
+.controls .buttons {
+    display: flex;
+    justify-content: space-around; /* Căn đều các nút trong chiều ngang */
+    width: 40%;
+    margin-bottom: 0px; /* Khoảng cách giữa các nút và thanh trượt */
+}
+
+/* Định dạng cho mỗi nút */
+.controls .buttons span {
+    font-size: 29px; /* Kích thước biểu tượng */
+    color: #bbb; /* Màu của biểu tượng */
+    cursor: pointer; /* Hiển thị con trỏ chuột dạng bàn tay khi hover */
+    transition: color 0.3s ease; /* Thêm hiệu ứng chuyển màu khi hover */
+}
+
+.controls .buttons span:hover {
+    color: #fff; /* Màu khi hover */
+    transform: scale(1.1);
+}
+
+.controls .buttons span i.bi-play-circle-fill {
+    font-size: 100%; /* Điều chỉnh kích thước biểu tượng */
+    color: #bbb; /* Màu sắc của biểu tượng */
+    cursor: pointer; /* Hiển thị con trỏ chuột dạng bàn tay khi hover */
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển đổi khi hover */
+}
+
+.controls .buttons span i.bi-play-circle-fill:hover {
+    color: #fff; /* Màu sắc khi hover */
+    transform: scale(1.1); /* Phóng to biểu tượng khi hover */
+}
+
+/* Định dạng cho slider container */
+.controls .silder-container {
+    display: flex;
+    align-items: center; /* Căn giữa các phần tử trong thanh trượt */
+    justify-content: center;
+    width: 100%;
+}
+
+/* Định dạng cho thời gian hiện tại và tổng thời gian */
+.controls .silder-container .curent-time,
+.controls .silder-container .total-duration {
+    font-size: 12px;
+    color: #bbb;
+    margin: 0 10px; /* Khoảng cách giữa thời gian và thanh trượt */
+}
+
+/* Định dạng cho thanh trượt */
+.controls .silder-container .slider {
+    flex-grow: 1; /* Thanh trượt sẽ chiếm toàn bộ không gian còn lại */
+    width: 70%; /* Đặt chiều rộng thanh trượt */
+    background: #444;
+    border: none;
+    height: 5px;
+    border-radius: 5px; /* Tạo góc bo tròn cho thanh trượt */
+    cursor: pointer; /* Hiển thị con trỏ chuột dạng bàn tay khi hover */
+}
+
+
+/* Hiệu ứng khi hover trên thanh trượt */
+.controls .silder-container .slider:hover {
+    background: #fff; /* Thay đổi màu khi hover */
+}
+
+/* Thêm hiệu ứng focus cho thanh trượt */
+.controls .silder-container .slider:focus {
+    outline: none; /* Loại bỏ đường viền mặc định */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Hiển thị hiệu ứng ánh sáng khi focus */
+}
+
+/* Định dạng chung cho .more-options */
+.more-options {
+    display: flex; /* Sắp xếp các phần tử theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    padding: 20px 0;
+    background: #161616;
+    max-width: 20%;
+    gap: 15px; /* Khoảng cách giữa các biểu tượng */
+    margin-left: 15px;
+    justify-content: flex-end; /* Đẩy .more-options sang bên phải */
+}
+
+/* Định dạng cho mỗi biểu tượng */
+.more-options span {
+    font-size: 24px; /* Kích thước biểu tượng */
+    color: #bbb; /* Màu sắc mặc định của biểu tượng */
+    cursor: pointer; /* Hiển thị con trỏ chuột dạng bàn tay khi hover */
+    transition: color 0.3s ease, transform 0.3s ease; /* Thêm hiệu ứng chuyển đổi khi hover */
+    width: auto; /* Điều chỉnh width để không giới hạn kích thước */
+    flex-shrink: 0; /* Đảm bảo các biểu tượng không bị co lại */
+    margin-left: 10px;
+}
+
+/* Hiệu ứng khi hover trên biểu tượng */
+.more-options span:hover {
+    color: #fff; /* Màu sắc khi hover */
+    transform: scale(1.1); /* Phóng to biểu tượng khi hover */
+}
+
+/* Thêm hiệu ứng cho từng biểu tượng nếu muốn */
+.more-options span i.bi-suit-heart-fill:hover {
+    color: white; /* Màu đỏ khi hover trên biểu tượng trái tim */
+}
+
+.more-options span i.bi-volume-up-fill:hover {
+    color: white; /* Màu cam khi hover trên biểu tượng volume */
+}
+
+.more-options span i.bi-list:hover {
+    color: white; /* Màu xanh lá khi hover trên biểu tượng danh sách */
+}
+
+.more-options span i.bi-three-dots:hover {
+    color: white; /* Màu xanh dương khi hover trên biểu tượng 3 chấm */
 }
 
 
