@@ -5,11 +5,10 @@ const usersConnection=require('../config/dbUsers');//import connections to datab
 const userSchema=new mongoose.Schema({
     email: {type: String, required: true, unique: true},
     password:{type: String, required: true},
-    //User profile
-   /* name: {type: String, required: true},
-    dob: {type: Date, required: true},
-    phonenumber: {type: String, required: true},
-    gender: {type: String, required: true},*/
+    name: {type: String, required: false},
+    gender: {type: String, required: false},
+    dob: {type: String, required: false},
+    phoneNumber: {type: String, required: false}
 
 },
     {collection: 'LogginUser'}

@@ -5,4 +5,3 @@ const router=express.Router();
 router.post('/signup', signup);// define /signup URL to the signup controller function, if user type this url, server will call signup function
 module.exports=router;
 
-
