@@ -564,8 +564,45 @@ body {
 }
 
 
+<<<<<<< Updated upstream
 .fixed-size {
     width: 300px;
     height: 300px;
     object-fit: cover; /* This ensures the image covers the entire area without distortion */
 }
+=======
+/* Định dạng Search */
+.search-results {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    top: 100%; /* Đặt phần tử ngay dưới thanh tìm kiếm */
+    left: 0;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background-color: #f0f0f0;
+}
+
+.search-result-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.search-result-info h4 {
+    font-size: 14px; /* Giảm kích thước font chữ */
+    margin: 0;
+}
+>>>>>>> Stashed changes

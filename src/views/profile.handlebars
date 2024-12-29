@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SoundJack</title>
+        <meta charset="utf-8">
+        <!-- Dùng để link tới css -->
+        <link rel="stylesheet" href="Profile.css">
+
+    </head>
+    <body>
+        <div class="background_image">
+            <div class="SoundJack">SoundJack</div>
+            <div class="Logo">
+                <img src="firefly-bnw.png" alt="Logo" class="logo">
+            </div>
+            
+        </div>
+        <form class="box_in4" id="Profile">
+            <img src="https://i.pinimg.com/474x/df/ce/a7/dfcea7989195d3273c2bcb367fca0a83.jpg" alt="Avatar" class="Avatar">
+            <p class="FullName_text"> Full Name</p>
+            <input type="text" id="FullName" placeholder="Enter your full name" value={{user.name}}>
+            <p class="DOB_text"> DOB</p>
+            <input type="text" id="DOB" placeholder="Enter your day of birth" value={{formatDate user.dob}}>
+            <p class="PhoneNumber_text">Phone Number</p>
+            <input type="tel" id="PhoneNumber" placeholder="Enter your phone number" value={{user.phoneNumber}}>
+            <div class="Gender">
+                <tr>Gender: </tr>
+                    <input type="radio" name="gender" value="male" {{#if (eq user.gender 'male')}}checked{{/if}}> Male
+                    <input type="radio" name="gender" value="female" {{#if (eq user.gender 'female')}}checked{{/if}}> Female
+            </div>
+            <button class="box_in4 button" type="submit">Save</button>
+        </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileForm = document.getElementById('Profile');
+            profileForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+                console.log('Get in here to fix user profile')
+                // Lấy dữ liệu từ các input fields
+                const fullName = document.getElementById('FullName').value;
+                const dob = document.getElementById('DOB').value;
+                const phoneNumber = document.getElementById('PhoneNumber').value;
+                const gender = document.querySelector('input[name="gender"]:checked').value;
+                console.log(fullName + " " + phoneNumber + " " + gender + " " + dob);
+                // Gửi dữ liệu đến server
+                try {
+                    const token = localStorage.getItem('token'); // Lấy JWT từ localStorage
+                    console.log(token);
+                    const response = await fetch('http://localhost:3000/api/user/fixprofile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ fullName, dob, phoneNumber, gender })
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        alert('Profile updated successfully!');
+                    } else {
+                        alert(`Failed to update profile: ${data.message}`);
+                    }
+                } catch (error) {
+                    console.error('Error updating profile:', error);
+                    alert('Error updating profile');
+                }
+            });
+        });
+
+    </script>
+        
+    </body>
+</html>

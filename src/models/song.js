@@ -1,19 +1,27 @@
 const mongoose = require('mongoose');
-const songsConnection=require('../config/dbSongs');//import connections to database "Users"
+const songsConnection=require('../config/dbSongs');
+const { Schema } = mongoose;
+const ObjectId = Schema.Types.ObjectId; // Import ObjectId từ Mongoose
 
 const songSchema=new mongoose.Schema({
     name: {type: String, required: true},
     playcount: {type: Number, required: true},
     like:{type: Number, required: true},
     upload_date: {type: Date, required: false},
+<<<<<<< Updated upstream
     artist: {type: String, required: true},
     image_url: {type: String, required:false},
+=======
+    artist: {type: ObjectId, required: true, ref: 'Artists'},
+    img_url: {type: String, required:false},
+
+>>>>>>> Stashed changes
 }, 
 
     {collection: 'Songs'}
 );
 // Tạo chỉ mục full-text trên trường title
-songSchema.index({ name: 'text', artist:'text'});
+songSchema.index({ name: 'text'});
 
 const Song = songsConnection.model('Song', songSchema);
 module.exports = Song;
