@@ -187,105 +187,117 @@
       // Gọi hàm để fetch artists khi trang được tải
       fetchArtists();
     </script>
-    <script>
+<script>
+  async function fetchSongs() {
+      try {
+          const response = await fetch('http://localhost:3000/api/song');
+          const songs = await response.json();
 
-      async function fetchSongs() {
-          try {
-              const response = await fetch('http://localhost:3000/api/song');
-              const songs = await response.json();
+          const itemsContainer = document.querySelector('.card');
+          itemsContainer.innerHTML = ''; // Xóa các nội dung cũ
 
-              const itemsContainer = document.querySelector('.card');
-              itemsContainer.innerHTML = ''; // Xóa các nội dung cũ
+          songs.forEach(song => {
+              const itemElement = document.createElement('div');
+              itemElement.classList.add('item');
+              itemElement.innerHTML = `
+                  <img src="${song.image_url}" alt="${song.name}">
+                  <div class="play-btn">
+                      <span><i class="fa-solid fa-play"></i></span>
+                  </div>
+                  <h4>${song.name}</h4>
+                  <p>${song.artist}</p>
+              `;
+              itemsContainer.appendChild(itemElement);
 
-              songs.forEach(song => {
-                  const itemElement = document.createElement('div');
-                  itemElement.classList.add('item');
-                  itemElement.innerHTML = `
-                      <img src="${song.image_url}" alt="${song.name}">
-                      <div class="play-btn">
-                          <span><i class="fa-solid fa-play"></i></span>
-                      </div>
-                      <h4>${song.name}</h4>
-                      <p>${song.artist}</p>
-                  `;
-                  itemsContainer.appendChild(itemElement);
+              // Gắn sự kiện click cho nút play-btn của bài hát này
+              const playButton = itemElement.querySelector('.play-btn');
+              playButton.addEventListener('click', () => {
+                  updateCurrentSong(song); // Truyền đúng bài hát vào hàm
               });
-          } catch (error) {
-              console.error('Error fetching songs:', error);
-          }
+          });
+      } catch (error) {
+          console.error('Error fetching songs:', error);
       }
-      document.addEventListener('DOMContentLoaded', () => {
+  }
+
+  function updateCurrentSong(song) {
+      const wrapper = document.querySelector('.wrapper.d-flex');
+      wrapper.innerHTML = `
+          <img src="${song.image_url}" alt="${song.name}" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+          <div class="details">
+              <span class="title" style="display: block; font-weight: bold;">${song.name}</span>
+              <span class="artist" style="display: block; color: gray;">${song.artist}</span>
+          </div>
+      `;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
           fetchSongs();
-      });
+  });
+  
+  document.getElementById('profileLink').addEventListener('click', async (event) => {
+  event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
 
-      document.getElementById('profileLink').addEventListener('click', async (event) => {
-      event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
-    
-        const token = localStorage.getItem('token'); // Lấy token từ localStorage
-        if (!token) {
-            alert('You are not logged in. Please log in first.');
-            return;
-        }
-        try {
-            // Fetch đến API
-            const response = await fetch('http://localhost:3000/api/user/profile', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-    
-            // Kiểm tra phản hồi
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Failed to fetch profile.');
-            }
-    
-            // Lấy dữ liệu JSON từ API
-            const data = await response.json();
-            console.log('Profile Data:', data);
-    
-            // Ví dụ: Redirect hoặc hiển thị thông tin profile
-            alert(`Welcome, ${data.username || 'User'}!`);
-            window.location.href = `http://localhost:3000/profile?name=${encodeURIComponent(data.profile.name)}&dob=${encodeURIComponent(data.profile.dob)}&phoneNumber=${encodeURIComponent(data.profile.phoneNumber)}&gender=${encodeURIComponent(data.profile.gender)}`;
-    
-        } catch (error) {
-            console.error('Error fetching profile:', error.message);
-            alert(error.message);
-        }
-<<<<<<< Updated upstream
-    });
-
-=======
-      });
-      document.getElementById('searchInput').addEventListener('input', function() {
-            const query = document.getElementById('searchInput').value;
-            if (query.length > 0) {
-                fetch(`http://localhost:3000/api/search?query=${query}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const searchResults = document.getElementById('searchResults');
-                        searchResults.innerHTML = '';
-                        data.forEach(song => {
-                          const listItem = document.createElement('div');
-                          console.log('hhe',song.name);
-                          listItem.classList.add('search-result-item');
-                          listItem.innerHTML = `
-                              <div class="search-result-info">
-                                  <h4>${song.name}</h4>
-                              </div>
-                          `;
-                          searchResults.appendChild(listItem);
-                          });
-                    })
-                    .catch(error => {
-                        console.error('Error searching for songs:', error);
-                    });
-            } else {
-                document.getElementById('searchResults').innerHTML = '';
+    const token = localStorage.getItem('token'); // Lấy token từ localStorage
+    if (!token) {
+        alert('You are not logged in. Please log in first.');
+        return;
+    }
+    try {
+        // Fetch đến API
+        const response = await fetch('http://localhost:3000/api/user/profile', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
             }
         });
->>>>>>> Stashed changes
+
+        // Kiểm tra phản hồi
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Failed to fetch profile.');
+        }
+
+        // Lấy dữ liệu JSON từ API
+        const data = await response.json();
+        console.log('Profile Data:', data);
+
+        // Ví dụ: Redirect hoặc hiển thị thông tin profile
+        alert(`Welcome, ${data.username || 'User'}!`);
+        window.location.href = `http://localhost:3000/profile?name=${encodeURIComponent(data.profile.name)}&dob=${encodeURIComponent(data.profile.dob)}&phoneNumber=${encodeURIComponent(data.profile.phoneNumber)}&gender=${encodeURIComponent(data.profile.gender)}`;
+
+    } catch (error) {
+        console.error('Error fetching profile:', error.message);
+        alert(error.message);
+    }
+  });
+  document.getElementById('searchInput').addEventListener('input', function() {
+        const query = document.getElementById('searchInput').value;
+        if (query.length > 0) {
+            fetch(`http://localhost:3000/api/search?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const searchResults = document.getElementById('searchResults');
+                    searchResults.innerHTML = '';
+                    data.forEach(song => {
+                      const listItem = document.createElement('div');
+                      console.log('hhe',song.name);
+                      listItem.classList.add('search-result-item');
+                      listItem.innerHTML = `
+                          <div class="search-result-info">
+                              <h4>${song.name}</h4>
+                          </div>
+                      `;
+                      searchResults.appendChild(listItem);
+                      });
+                })
+                .catch(error => {
+                    console.error('Error searching for songs:', error);
+                });
+        } else {
+            document.getElementById('searchResults').innerHTML = '';
+        }
+    });
     </script>
 </body>
