@@ -260,6 +260,7 @@ body {
     background: transparent;
     border: 0;
     margin-bottom: -15px;
+    flex-wrap: wrap;
 }
 
 .song-list .card .item {
@@ -563,3 +564,8 @@ body {
 }
 
 
+.fixed-size {
+    width: 300px;
+    height: 300px;
+    object-fit: cover; /* This ensures the image covers the entire area without distortion */
+}
