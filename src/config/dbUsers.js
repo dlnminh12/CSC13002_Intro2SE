@@ -15,3 +15,4 @@ usersConnection.on('error', (err) => {
 });
 
 module.exports = usersConnection;
+

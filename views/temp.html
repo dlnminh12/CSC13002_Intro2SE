@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+</head>
+<body>
+    <h1>Music Player</h1>
+    <input type="text" id="searchInput" placeholder="Search for songs...">
+    <ul id="searchResults"></ul>
+    <ul id="musicList"></ul>
+    <audio id="audioPlayer" controls></audio>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const query = document.getElementById('searchInput').value;
+            if (query.length > 0) {
+                fetch(`http://localhost:3000/api/search?query=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const searchResults = document.getElementById('searchResults');
+                        searchResults.innerHTML = '';
+                        data.forEach(song => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = song.title;
+                            listItem.addEventListener('click', () => {
+                                const audioPlayer = document.getElementById('audioPlayer');
+                                audioPlayer.src = song.filePath;
+                                audioPlayer.play();
+                            });
+                            searchResults.appendChild(listItem);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error searching for songs:', error);
+                    });
+            } else {
+                document.getElementById('searchResults').innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>

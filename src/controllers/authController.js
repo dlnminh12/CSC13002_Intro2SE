@@ -3,6 +3,7 @@ const User = require('../models/user');///////
 // define user controller
 
 exports.signup=async(req, res)=> {// req: represent user request, res: represent user response 
+    console.log('get into signup controller');
     try{
         const {email, password}=req.body;
         const user = new User({email,password});

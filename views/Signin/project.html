@@ -33,37 +33,35 @@
         </form>
     </div>
     <script>
-    document.getElementById('loginForm').addEventListener('submit', async function(event) {
-        event.preventDefault(); // Ngừng reload trang khi submit form
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+            try {
+                const response = await fetch('http://localhost:3000/api/login/signin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
 
+                if (!response.ok) {
+                    throw new Error('Login failed');
+                }
 
-        // Gửi yêu cầu POST đến API
-        try {
-            const response = await fetch('http://localhost:3000/api/login/signin', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-            const data = await response.json();
-            console.log('Response from server:', data);
-            if (response.ok) {
+                const result = await response.json();
+                //console.log('After login',result.accessToken );
+                localStorage.setItem('token', result.accessToken); // Lưu token vào localStorage
                 alert('Login successful');
-                window.location.href = '../Homepage/index.html'; // Redirect to homepage
-                
-                // Redirect or handle success
-            } else {
-                alert('Login failed: ' + data.message);
+                window.location.href = '../Homepage/index.html'; // Chuyển hướng đến trang chủ
+            } catch (error) {
+                console.error('Error during login:', error);
+                alert('Login failed');
             }
-        } catch (error) {
-        console.error('Error:', error);
-        alert('An unexpected error occurred. Please try again.');
-        }
-    });
+        });
+
     </script>
     
 </body>
