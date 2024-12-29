@@ -12,6 +12,9 @@ const SECRET_KEY = 'jackmusic'; // Khóa bí mật.
 //handle-bars: 
 const exphbs = require('express-handlebars'); // Import express-handlebars
 
+const connectToDB = require('./config/dbArtists'); // Import hàm kết nối MongoDB
+const getArtists = require('./config/dbArtists');  // Import hàm truy vấn dữ liệu từ MongoDB
+
 // Serve static files (if necessary)
 
 app.set('view engine', 'hbs');
@@ -85,6 +88,26 @@ app.get('/api/user/profile', verifyToken, async (req, res) => {
         console.log('User profile have some error ', err);
         res.status(500).json({ success: false, message: 'Failed to get profile' });
     }
+});
+
+app.get('/homepage', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'Homepage', 'index.html'));
+});
+
+connectToDB();
+app.get('/api/artists', async (req, res) => {
+    
+    try {
+      const artists = await getArtists();  // Lấy dữ liệu artist
+      res.json(artists);  // Trả về danh sách artist dưới dạng JSON
+    } catch (err) {
+      console.error('Error fetching artists:', err);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+
+app.get('/api/artists', async (req, res) => {
+
 });
 
 app.get('/signup', (req, res) => {
