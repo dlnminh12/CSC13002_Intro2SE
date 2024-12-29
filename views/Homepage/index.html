@@ -13,7 +13,7 @@
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="style.css">
 
-    <link rel="shortcut icon" href="ff_icon.png" type="image/png">
+    <link rel="shortcut icon" href="ff.png" type="image/png">
     
     <title>Soundjack - Fly and Bright</title>
     </head>
@@ -76,9 +76,9 @@
         <div class="sidebar-scroll">
           <div class="created-playlist">
             <ul>
-              <li><img src="avatar.jpg" alt="Avatar">Playlist #1</li>
-              <li><img src="avatar.jpg" alt="Avatar">Playlist #2</li>
-              <li><img src="avatar.jpg" alt="Avatar">Playlist #3</li>
+              <li><img src="https://cdn.discordapp.com/attachments/1230956003105705994/1320552334400421898/Screenshot_20241220_164717_Instagram.jpg?ex=6771ecb3&is=67709b33&hm=13a05e5934014b000ce89f6275615e74e7808a6374b8897ad996f51e5b4eac6b&" alt="Avatar">Playlist #1</li>
+              <li><img src="https://cdn.discordapp.com/attachments/1230956003105705994/1320552334400421898/Screenshot_20241220_164717_Instagram.jpg?ex=6771ecb3&is=67709b33&hm=13a05e5934014b000ce89f6275615e74e7808a6374b8897ad996f51e5b4eac6b&" alt="Avatar">Playlist #2</li>
+              <li><img src="https://cdn.discordapp.com/attachments/1230956003105705994/1320552334400421898/Screenshot_20241220_164717_Instagram.jpg?ex=6771ecb3&is=67709b33&hm=13a05e5934014b000ce89f6275615e74e7808a6374b8897ad996f51e5b4eac6b&" alt="Avatar">Playlist #3</li>
               <li><img src="avatar.jpg" alt="Avatar">Playlist #4</li>
               <li><img src="avatar.jpg" alt="Avatar">Playlist #5</li>
               <li><img src="avatar.jpg" alt="Avatar">Playlist #6</li>
@@ -212,7 +212,59 @@
           </div>
         </div>
       </div>
+
+      <div class="song-list">
+        <script>
+          // Hàm fetch danh sách artists từ API
+          async function fetchArtists() {
+      try {
+        // Lấy dữ liệu từ API '/api/artists'
+        const response = await fetch('/api/artists');
+        const artists = await response.json();  // Parse dữ liệu JSON
+
+        // Định nghĩa các index của những artist bạn muốn hiển thị
+        const selectedIndices = [10, 1, 2, 33, 34, 21];
+
+        // Lấy phần tử DOM nơi sẽ hiển thị danh sách các artist
+        const artistsListElement = document.getElementById('artists-list');
         
+        // Làm sạch nội dung phần tử trước khi hiển thị mới
+        artistsListElement.innerHTML = '';
+
+        // Duyệt qua các index đã chọn và hiển thị thông tin của artist tương ứng
+        selectedIndices.forEach(index => {
+          // Kiểm tra xem index có trong phạm vi mảng hay không
+          if (index < artists.length) {
+            const artist = artists[index];  // Lấy thông tin artist từ index
+
+            // Tạo div cho mỗi artist với class 'item'
+            const artistDiv = document.createElement('div');
+            artistDiv.classList.add('item');  // Thêm class 'item' vào
+
+            // Thêm nội dung vào mỗi div (hiển thị tên và số followers)
+            artistDiv.innerHTML = `
+                <img src="${artist.image_url}" alt="${artist.artist}" style="width: 135px; height: 135;  object-fit: cover; border-radius: 10px;">
+                
+                <h7 style = "color: white;">${artist.artist}</h7>
+                `;
+                // Thêm div vào phần tử hiển thị
+                artistsListElement.appendChild(artistDiv);
+              }
+              });
+            } catch (error) {
+              // Xử lý lỗi nếu có
+              console.error('Error fetching artists:', error);
+            }
+          }
+      
+          // Gọi hàm để fetch artists khi trang được tải
+          fetchArtists();
+        </script>
+        <h2>Discover artists</h2>
+        <div class="card" id="artists-list">
+          <!-- Danh sách artists sẽ được hiển thị ở đây -->
+      </div>
+
       <div class="song-list">
         <h2>Your shows</h2>
         <div class="card">
