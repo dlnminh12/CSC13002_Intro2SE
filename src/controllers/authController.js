@@ -1,6 +1,4 @@
-// import user from models
-const User = require('../models/user');///////
-// define user controller
+const User = require('../models/user');
 
 exports.signup=async(req, res)=> {// req: represent user request, res: represent user response 
     console.log('get into signup controller');

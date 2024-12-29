@@ -7,8 +7,7 @@ const songSchema=new mongoose.Schema({
     like:{type: Number, required: true},
     upload_date: {type: Date, required: false},
     artist: {type: String, required: true},
-    img_url: {type: String, required:false},
-
+    image_url: {type: String, required:false},
 }, 
 
     {collection: 'Songs'}

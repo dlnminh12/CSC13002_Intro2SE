@@ -6,14 +6,16 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const { signin } = require('./controllers/logController'); // Import logController
 const User = require('./models/user'); // Import model User
+const Song = require('./models/song');
 const authRoutes=require('./routes/authUser');
+const songRoutes = require('./routes/songRoutes');
 const app = express();
 const SECRET_KEY = 'jackmusic'; // Khóa bí mật.
+
 //handle-bars: 
 const exphbs = require('express-handlebars'); // Import express-handlebars
 
 // Serve static files (if necessary)
-
 app.set('view engine', 'hbs');
 
 
@@ -106,4 +108,6 @@ app.get('/api/search', async (req, res) => {
         res.status(500).json({ success: false, message: 'Failed to load music data' });
     }
 });
+
+app.use('/api/song', songRoutes); // Use song routes
 
