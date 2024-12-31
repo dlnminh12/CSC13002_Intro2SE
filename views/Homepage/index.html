@@ -114,10 +114,10 @@
     
     <div class="homepage-player fixed-bottom text-white">
       <div class="wrapper d-flex justify-content-between align-items-center">
-        <img src="play.jpg" alt=""> 
+        <img src="" alt=""> 
         <div class="details">
-          <span class="title">Jingle Bell Rock</span>
-          <span class="artist">Bobby Helms</span>
+          <span class="title"></span>
+          <span class="artist"></span>
         </div>
       </div>
       <div class="controls">
@@ -292,10 +292,16 @@
                               </div>
                           `;
                           searchResults.appendChild(listItem);
+                          listItem.addEventListener('click', () => {
+                              updateCurrentSong(song);})
                           });
                     })
                     .catch(error => {
                         console.error('Error searching for songs:', error);
+                        const noResultsMessage = document.createElement('div');
+                        noResultsMessage.classList.add('no-results-message');
+                        noResultsMessage.innerHTML = 'No results found';
+                        searchResults.appendChild(noResultsMessage);
                     });
             } else {
                 document.getElementById('searchResults').innerHTML = '';
