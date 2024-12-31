@@ -168,9 +168,31 @@ app.get('/signin', (req, res) => {
 app.get('/api/search', async (req, res) => {
     const query = req.query.query;
     try {
-        const songs = await Song.find({ $text: { $search: query } });
-        console.log(songs);
-        res.json(songs);
+        const songs = await Song.aggregate([
+            { $match: { name: { $regex: query, $options: 'i' } } },
+            {
+                $lookup: {
+                    from: 'Artists',
+                    localField: 'artist',
+                    foreignField: '_id',
+                    as: 'artist'
+                }
+            },
+            { $unwind: '$artist' },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    image_url: 1,
+                    artist: '$artist.artist'
+                }
+            }
+        ]);
+        if (songs.length === 0) {
+            res.json({ success: true, message: 'No results found' });
+        } else {
+            res.json(songs);
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ success: false, message: 'Failed to load music data' });
