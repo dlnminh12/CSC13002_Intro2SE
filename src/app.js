@@ -6,32 +6,14 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const { signin } = require('./controllers/logController'); // Import logController
 const User = require('./models/user'); // Import model User
-<<<<<<< Updated upstream
 const Song=require('./models/song'); // Import model Song
-=======
-const Song = require('./models/song');
->>>>>>> Stashed changes
 const authRoutes=require('./routes/authUser');
 const songRoutes = require('./routes/songRoutes');
 const app = express();
 const SECRET_KEY = 'jackmusic'; // Khóa bí mật.
-<<<<<<< Updated upstream
 const expbs = require('express-handlebars');
 const connectToDB = require('./config/dbArtists'); // Import hàm kết nối MongoDB
 const getArtists = require('./config/dbArtists');  // Import hàm truy vấn dữ liệu từ MongoDB
-=======
-
-//handle-bars: 
-const exphbs = require('express-handlebars'); // Import express-handlebars
-
-const connectToDB = require('./config/dbArtists'); // Import hàm kết nối MongoDB
-const getArtists = require('./config/dbArtists');  // Import hàm truy vấn dữ liệu từ MongoDB
-
-// Serve static files (if necessary)
-app.set('view engine', 'hbs');
-const expbs = require('express-handlebars');
-
->>>>>>> Stashed changes
 // Cấu hình Handlebars
 const hbs = expbs.create({
     defaultLayout: false,
@@ -195,10 +177,4 @@ app.get('/api/search', async (req, res) => {
     }
 });
 
-<<<<<<< Updated upstream
 app.use('/api/song', songRoutes);
-=======
-app.use('/api/song', songRoutes); // Use song routes
-
-
->>>>>>> Stashed changes

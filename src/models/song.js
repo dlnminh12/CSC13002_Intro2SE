@@ -8,13 +8,8 @@ const songSchema=new mongoose.Schema({
     playcount: {type: Number, required: true},
     like:{type: Number, required: true},
     upload_date: {type: Date, required: false},
-<<<<<<< Updated upstream
     artist: {type: ObjectId, required: true, ref: 'Artists'},
     img_url: {type: String, required:false},
-=======
-    artist: {type: String, required: true},
-    image_url: {type: String, required:false},
->>>>>>> Stashed changes
 }, 
 
     {collection: 'Songs'}

@@ -564,13 +564,11 @@ body {
 }
 
 
-<<<<<<< Updated upstream
 .fixed-size {
     width: 300px;
     height: 300px;
     object-fit: cover; /* This ensures the image covers the entire area without distortion */
 }
-=======
 /* Định dạng Search */
 .search-results {
     background-color: white;
@@ -605,4 +603,3 @@ body {
     font-size: 14px; /* Giảm kích thước font chữ */
     margin: 0;
 }
->>>>>>> Stashed changes
