@@ -95,9 +95,7 @@ app.get('/api/user/profile', verifyToken, async (req, res) => {
     console.log('getProfile', userId);
     try {
         const profile = await getProfile(userId);
-        console.log('HERE THE USER PROFILE', profile);
-        console.log('User profile', profile);
-        
+        console.log('HERE THE USER PROFILE', profile);        
         res.status(200).json({ success: true, profile });
     } catch (err) {
         console.log('User profile have some error ', err);
@@ -110,32 +108,6 @@ app.get('/profile', (req, res) => {
     res.render('profile', { user: {name, dob, phoneNumber, gender } }); // Render profile.handlebars với dữ liệu profile
 });
 
-// app.post('/api/user/fixprofile',verifyToken, async (req, res) => {
-//     console.log('User fixprofile');
-//     const userId=req.user.id;
-//     const {name, dob, phoneNumber, gender}=req.body;
-//     console.log(name, dob, phoneNumber, gender);
-//     try{
-//         const user=await User.findById(userId);
-//         if(!user)
-//         {
-//             res.sendStatus(404).json({success: false, message:'User not found'});
-//         }
-//         user.name=name;
-//         user.phoneNumber=phoneNumber;
-//         user.gender=gender;
-//         user.dob=dob;
-//         await user.save();
-//         res.status(200).json({ success: true, message: 'Profile updated successfully' });
-
-//     }
-//     catch(err){
-//         console.error('Error updating profile:', err);
-//         res.status(500).json({ success: false, message: 'Failed to update profile' });
-
-//     }
-
-// })
 
 app.get('/homepage', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'Homepage', 'index.html'));
