@@ -10,7 +10,7 @@
     background-size: cover; /* Ảnh sẽ bao phủ toàn bộ */
     background-position: center; /* Đặt ảnh ở giữa */
     background-repeat: no-repeat; /* Không lặp lại ảnh */
-    width: 100%;
+    width: 100vw;
     height: 100vh; /* Chiều cao bằng chiều cao của viewport */
     position: fixed; /* Giữ vị trí cố định */
     top: 0;
@@ -25,16 +25,16 @@
     position:relative;
     color:var(--text_color);
     z-index: 0;
-    left:57px;
-    top:15px;
+    left:4vw;
+    top:2vh;
 }
 .background_image .Logo
 {
     position:absolute;
     width:2%;
     height:4%;
-    top:10px;
-    left:20px;
+    top:1.5vh;
+    left:1.5vw;
 }
 .Unlock_text 
 {
@@ -44,8 +44,8 @@
     position: relative;
     color:var(--text_color);
     z-index: 0; /* Đảm bảo chữ nằm trên lớp phủ */
-    top: 100px;
-    left: 31%;
+    top: 14vh;
+    left: 36.5vw;
 }
 .Login_text
 {
@@ -55,18 +55,18 @@
     position: relative;
     color:var(--text_color);
     z-index: 0; /* Đảm bảo chữ nằm trên lớp phủ */
-    top: 110px;
-    left: 38%;
+    top: 15vh;
+    left: 42vw;
 }
 
 .box_Login
 {
     position: relative;
-    top: 45%;
-    left:  50%; 
-    width: 30%; 
+    top: 40vh;
+    left:  51vw; 
+    width: 28vw;
+    height: 40vh; 
     transform: translate(-50%, -35%);
-    height: 50%; 
     color:white;
     display:flex;
     align-items: top;
@@ -84,8 +84,8 @@
     font-size:20px;
     width: 80%;
     padding: 10px;
-    margin-left: 20%;
-    margin-top: 10px;
+    margin-left: 5vw;
+    margin-top: 1vh;
     
 }
 .box_Login .Email_text
@@ -94,8 +94,8 @@
     font-family: var(--text_font);
     font-size:15px;
     font-weight: bold;
-    margin-top:70px;
-    margin-left: -15%;
+    margin-top:7vh;
+    margin-left: -5.6vw;
 }
 
 .box_Login .Password_text
@@ -104,8 +104,8 @@
     font-family: var(--text_font);
     font-size:15px;
     font-weight: bold;
-    margin-top:160px;
-    margin-left: -15%;
+    margin-top:17vh;
+    margin-left: -5.6vw;
 }
 
 .box_Login input[type="email"]
@@ -120,8 +120,8 @@
     color: #fff;
     font-size: 1rem;
     position: absolute;
-    margin-top: 100px;
-    margin-left: -15%;
+    margin-top: 10vh;
+    margin-left: -5.6vw;
 }
 
 .box_Login input[type="password"]
@@ -136,8 +136,8 @@
     color: #fff;
     font-size: 1rem;
     position: absolute;
-    margin-top:190px;
-    margin-left: -15%;
+    margin-top:20vh;
+    margin-left: -5.6vw;
 }
 
 .box_Login button[type="submit"]
@@ -149,8 +149,8 @@
     background-color: rgb(105, 105, 105);
     color:var(--text_color);
     padding: 15px;
-    margin-top:250px;
-    margin-left: -15%;
+    margin-top:29vh;
+    margin-left: -5.6vw;
     cursor: pointer;
     font: bold 16px Arial, sans-serif;
 }
@@ -185,6 +185,7 @@ p a:hover {
     font-size:15px;
     margin-top: 310px;
 } */
+
 
 
 
