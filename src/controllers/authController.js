@@ -3,6 +3,7 @@ const User = require('../models/user');
 exports.signup = async (req, res) => {
     try {
         const { email, password, confirmPassword, dob, gender, name, phoneNumber } = req.body;
+        console.log(gender);
 
         if (password !== confirmPassword) {
             return res.status(400).send({ error: 'Passwords do not match' });
