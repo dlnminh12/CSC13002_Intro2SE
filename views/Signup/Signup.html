@@ -15,7 +15,7 @@
         </div>
         <div class="container">
             <h2 style="font: Arial, sans-serif; color: white; margin: 5% 35% 20px 40%"> Sign Up</h2>
-            <form id="SignUpForm">
+            <form id="SignUpForm" class="form-grid">
                 <label for="Username" style="color: aliceblue;">Email</label>
                 <input class="display1 text" type="email" name="Email" placeholder="Email" required>
 
@@ -24,7 +24,28 @@
 
                 <label for="Retype_Password" style="color: aliceblue;">Confirm Password</label>
                 <input class="display1 text" type="password" name="ConfirmPassword" placeholder="Confirm Password" required>
-                <p id="already"> Already have an account? <a href="../Signin/project.html">Sign in here</a></p>
+                
+                <label for = "FullName_text" style="color: aliceblue;">Full Name</label>
+                <input class="display1 text" type="text" name="FullName" placeholder="Enter your full name">
+
+                <label for = "DOB_text" style="color: aliceblue;">DOB</label>
+                <input class="display1 text" type="date" name="DOB" placeholder="Enter your date of birth">
+
+                <label for = "PhoneNumber_text" style="color: aliceblue;">Phone Number</label>
+                <input class="display1 text" type="tel" name="PhoneNumber" placeholder="Enter your phone number">
+
+                <label for="Gender" style="color: aliceblue;">Gender</label>
+                <div class="gender-options">
+                    <label class="gender-label">
+                        <label for="male" style="color: aliceblue;">Male</label>
+                        <input type="radio" id="male" name="Gender" value="male" >
+                        
+                        <label for="female" style="color: aliceblue;">Female</label>
+                        <input type="radio" id="female" name="Gender" value="female" >                                   
+                    </label>
+                </div>
+
+            <p id="already"> Already have an account? <a href="../Signin/project.html">Sign in here</a></p>
                 <button class="signupbutton" type="submit">Sign up</button>
             </form>
         </div>
@@ -38,13 +59,18 @@
             const email = document.querySelector('input[name="Email"]').value;
             const password = document.querySelector('input[name="Password"]').value;
             const confirmPassword = document.querySelector('input[name="ConfirmPassword"]').value;
+            const name = document.querySelector('input[name="FullName"]').value;
+            const dob = document.querySelector('input[name="DOB"]').value;
+            const phoneNumber = document.querySelector('input[name="PhoneNumber"]').value
+            const gender = document.querySelector('input[name="Gender"]').value
+            console.log(gender);
             try {
                 const response = await fetch('http://localhost:3000/api/auth/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email, password })
+                    body: JSON.stringify({ email, password,confirmPassword,dob,gender,name,phoneNumber})
                 });
                 const data = await response.json();
                 if (response.ok ) {
@@ -52,7 +78,7 @@
                     window.location.href = '../Signin/project.html';
 
                 } else {
-                    alert('Sign up failed: ' + (data.message || 'Unknown error.'));
+                    alert('Sign up failed: ' + (data.message || 'Email already exists or unmatch password with confirm password'));
                 }
             } catch (error) {
                 console.error('Error:', error);

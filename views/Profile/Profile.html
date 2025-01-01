@@ -23,14 +23,9 @@
             <input type="date" id="DOB" placeholder="Enter your day of birth" value={{user.dob}}>
             <p class="PhoneNumber_text">Phone Number</p>
             <input type="tel" id="PhoneNumber" placeholder="Enter your phone number" value="{{phoneNumber}}">
-            <div class="Gender">
-                <tr>Gender: </tr>
-                <input type="radio" name="Gender" {{#if user.genderMale}}checked{{/if}}>Male
-                <input type="radio" name="Gender" {{#if user.genderFemale}}checked{{/if}}>Female
-            </div>
+            <p class="Gender">Gender</p>
+            <input type="text" id="Gender" placeholder="Gender" value="{{gender}}">
             <button class="box_in4 button" type="submit">Save</button>
-            
-
         </div>
         <script>
             document.getElementById('Profile', async function(){
@@ -41,6 +36,7 @@
                         document.getElementById('FullName').value=data.data.FullName;
                         document.getElementById('DOB').value=data.data.DOB;
                         document.getElementById('PhoneNumber').value=data.data.PhoneNumber;
+                        document.getElementById('Gender').value=data.data.Gender;
                     }
                     else{
                         alert(data.message);
